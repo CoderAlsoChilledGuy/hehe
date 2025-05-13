@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <title>TELEFON TƏHLÜKƏSİZLİK TESTİ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 50px;
+        }
+        .captcha-box {
+            background: #2c3e50;
+            padding: 30px;
+            border-radius: 10px;
+            display: inline-block;
+            margin: 20px;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
+            background: #27ae60;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        button:hover {
+            background: #219a52;
+        }
+        #loading {
+            display: none;
+            font-size: 24px;
+            color: #f1c40f;
+        }
+        .warning {
+            font-size: 40px;
+            color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="warning">⛔ TƏHLÜKƏSİZLİK XƏBƏRDARLIĞI ⛔</h1>
+    <p>Telefonunuzda aktiv bir təhlükəsizlik pozuntusu aşkarlandı!</p>
+
+    <div class="captcha-box">
+        <h3>İnsan olduğunuzu təsdiqləyin:</h3>
+        <p>2 + 3 neçə edir? (Cavabı rəqəmlə yazın)</p>
+        <input type="text" id="captcha" placeholder="Cavabı daxil edin">
+        <button onclick="checkCaptcha()">TƏSDİQLƏ</button>
+    </div>
+
+    <div id="loading">SİSTEM YOXLANILIR... 📱 HACKERLƏR MÜDAXİLƏ EDİR!</div>
+
+    <script>
+        function checkCaptcha() {
+            const answer = document.getElementById('captcha').value;
+            
+            // CAPTCHA doğru olsa belə şaka edək!
+            if (answer === '5') {
+                document.querySelector('.captcha-box').style.display = 'none';
+                document.getElementById('loading').style.display = 'block';
+                
+                setTimeout(() => {
+                    alert('XƏBƏRDARLİQ: MUSTAFA ADLI HACKER TELEFONUNUZUN ŞİFRƏSİNİ OĞURLADI!\n\nŞifrəniz: ********* artıq 127.0.0.1 IP ünvanında aktivdir!');
+                    document.body.innerHTML = `
+                        <h1 style="color: #e74c3c;">📱 TELEFONUNUZ HACK EDİLDİ! 💀</h1>
+                        <p>😂</p>
+                        <img src="https://media.giphy.com/media/l0MYEqEzwMWFCg8rm/giphy.gif" width="300">
+                    `;
+                }, 3000);
+            } else {
+                alert("❌ Səhv cavab! Yenidən cəhd edin.");
+            }
+        }
+    </script>
+</body>
+</html>
